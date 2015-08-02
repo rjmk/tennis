@@ -32,6 +32,8 @@ test('curried sum returns correct val when called in two stages on random nums',
 	t.end()
 })
 
+
+//this should be new to this branch
 test('curried sum returns 5 when immediately given sufficient arguments', function (t) {
 	var x = Math.random();
 	var y = Math.random();
