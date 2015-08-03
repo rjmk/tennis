@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "tape test.js"
+    "test": "semistandard && tape test.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "semistandard": "^6.1.2",
     "tape": "^4.0.1"
   }
 }
