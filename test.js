@@ -57,10 +57,9 @@ test('curried sumThree function  must be invoked at lest three times to get the 
 function id (x) { return x; }
 
 var trace = curry(function (tag, x) {
-
-  console.log(tag);
+  console.log(tag, x);
   return x;
-})
+});
 
 test('compose is a function', function (t) {
 
