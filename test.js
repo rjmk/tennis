@@ -72,3 +72,12 @@ test('compose should return a function when called with 2 functions', function (
   t.equals(typeof compose(trace, id), 'function');
   t.end();
 });
+
+test('composition of sum and sum works as expected', function (t) {
+
+  var x = Math.random();
+  var y = Math.random();
+  var z = Math.random();
+  t.equals(compose(sum(x), sum)(y, z), x + y + z);
+  t.end();
+});
