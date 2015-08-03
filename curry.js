@@ -2,11 +2,15 @@
 
 module.exports = function curry (fn) {
 
-  return function () {
+  var len = fn.length;
+  var args = [];
+  return function moreArgs () {
 
-    if (fn.length === arguments.length) {
-      return fn.apply(null, arguments);
+    args = args.concat([].slice.call(arguments));
+    while ((len - args.length) > 0) {
+
+      return moreArgs;
     }
-    return fn.bind.apply(fn, [null].concat([].slice.call(arguments)));
+    return fn.apply(undefined, args);
   };
 };

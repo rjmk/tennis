@@ -5,6 +5,10 @@ function sum (a, b) {
   return a + b;
 }
 
+function sumThree (a, b, c) {
+  return a + b + c;
+}
+
 test('curry is a function', function (t) {
 
   t.equal(typeof curry, 'function');
@@ -33,14 +37,15 @@ test('curried sum returns correct val when called in two stages on random nums',
 
   var x = Math.random();
   var y = Math.random();
-  t.equals(curry(sum)(x)(y), x + y);
+  t.equals(curry(sum)(x, y), x + y);
   t.end();
 });
 
-test('curried sum returns 5 when immediately given sufficient arguments', function (t) {
+test('curried sumThree function  must be invoked at lest three times to get the result', function (t) {
 
   var x = Math.random();
   var y = Math.random();
-  t.equals(curry(sum)(x, y), x + y);
+  var z = Math.random();
+  t.equals(curry(sumThree)(x)(y)(z), x + y + z);
   t.end();
 });
