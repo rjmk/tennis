@@ -1,6 +1,8 @@
 var test = require('tape');
 var curry = require('./curry');
+var compose = require('./compose');
 
+// ---------- CURRY ----------
 function sum (a, b) {
   return a + b;
 }
@@ -11,19 +13,19 @@ function sumThree (a, b, c) {
 
 test('curry is a function', function (t) {
 
-  t.equal(typeof curry, 'function');
+  t.equals(typeof curry, 'function');
   t.end();
 });
 
 test('curry returns a function when called on sum', function (t) {
 
-  t.equal(typeof curry(sum), 'function');
+  t.equals(typeof curry(sum), 'function');
   t.end();
 });
 
 test('curry(sum)(2) returns a function', function (t) {
 
-  t.equal(typeof curry(sum)(2), 'function');
+  t.equals(typeof curry(sum)(2), 'function');
   t.end();
 });
 
@@ -47,5 +49,26 @@ test('curried sumThree function  must be invoked at lest three times to get the 
   var y = Math.random();
   var z = Math.random();
   t.equals(curry(sumThree)(x)(y)(z), x + y + z);
+  t.end();
+});
+
+// ---------- COMPOSE ----------
+
+function id (x) { return x; }
+
+var trace = curry(function (tag, x) {
+  console.log(tag, x);
+  return x;
+});
+
+test('compose is a function', function (t) {
+
+  t.equals(typeof compose, 'function');
+  t.end();
+});
+
+test('compose should return a function when called with 2 functions', function (t) {
+
+  t.equals(typeof compose(trace, id), 'function');
   t.end();
 });
